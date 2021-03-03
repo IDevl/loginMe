@@ -1,0 +1,88 @@
+
+
+
+body
+{
+    font-family: 'Sora';
+    background-color: grey;
+    margin: 0;
+}
+
+
+.main {
+  width: 1280px;
+  height: 100%;
+  margin: auto;
+  background-color: white;
+}
+
+.loginform {
+  margin: auto;
+  position: relative;
+  top: 200px;
+  text-align: center;
+  width: 50%;
+  border: 1px solid black;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.button {
+  background-color: black;
+  border: 0px;
+  border-radius: 20px;
+  padding: 10px 90px;
+  color: white;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.button:hover {
+  background-color: grey;
+
+}
+
+.username {
+    padding: 10px 30px;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 13px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 480px) {
+  .main {
+
+    height: 300vh;
+
+  }
+
+  .username {
+      text-align: center;
+      width: 80%;
+      height: 100px;
+      font-size: 33px;
+  }
+
+  .button {
+    width: 80%;
+    height: 100px;
+    font-size: 33px;
+  }
+
+  .loginform {
+
+    top: 500px;
+    width: 80%;
+    padding-bottom: 100px;
+  }
+
+  .errors {
+    font-size: 33px;
+  }
+
+}

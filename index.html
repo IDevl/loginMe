@@ -1,0 +1,120 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"  href="styles1.css">
+  </head>
+   <body>
+
+      <div class = "main">
+        <div class = "loginform"
+         <a class = "userImage"> </a><br><br>
+         <a class = "errors" id="errors"></a><br><br>
+
+
+         <input type = "text" class = "username" name = "username" id="username" placeholder="Username" required </input><br><br>
+         <input type = "text" class = "username" name = "password" id="password" placeholder="Password" required </input><br><br>
+         <input class="button" type="button" id="button" onclick="validate()" value="SUBMIT"> </input>
+       </div>
+
+      </div>
+
+
+
+      <script>
+        var attempts = 3;
+        var secs = 0;
+
+        function validate(){
+          username = document.getElementById("username").value;
+          password = document.getElementById("password").value;
+
+          if (attempts == 0 && username == "admin" && password != "password") {
+                document.getElementById("errors").innerHTML = "No more Attemps";
+                document.getElementById("username").disabled = true;
+                document.getElementById("password").disabled = true;
+                document.getElementById("button").disabled = true;
+          }
+          else {
+
+              if (username == "" && password == "")
+              {
+                document.getElementById("errors").innerHTML = "Please Enter Username and Password";
+              }
+              else if (username == "")
+              {
+                document.getElementById("errors").innerHTML = "Please Enter Username";
+              }
+              else if (password == "")
+              {
+                document.getElementById("errors").innerHTML = "Please Enter Password";
+              }
+              else if (username != "admin")
+              {
+                document.getElementById("errors").innerHTML = "Username not found";
+              }
+              else if ( username == "admin" && password != "password" )
+              {
+                document.getElementById("errors").innerHTML = "Wrong Password";
+                document.getElementById("button").disabled = true
+                attempts--;
+                setTimeout(function(){document.getElementById("errors").innerHTML = (attempts+1) + " attempts left"; document.getElementById("button").disabled = false}, 1000);
+
+              }
+              else {
+                document.getElementById("errors").innerHTML = "";
+                setTimeout(function(){document.getElementById("errors").innerHTML = " attempts left";}, 1000);
+                window.location.href = "homepage.html";
+              }
+            }
+          }
+
+
+
+
+
+
+
+
+                function countDown(secs,elem) {
+
+                      var element = document.getElementById(elem);
+
+                      document.getElementById("errors").innerHTML = "You can input again in " + secs + " seconds";
+
+
+                      if(secs > 1) {
+                          document.getElementById("username").disabled = true;
+                          document.getElementById("password").disabled = true;
+                          document.getElementById("button").disabled = true;
+                      }
+                      if(secs < 1) {
+
+                          clearTimeout(timer);
+                          document.getElementById("username").disabled = false;
+                          document.getElementById("password").disabled = false;
+                          document.getElementById("button").disabled = false;
+                          element.innerHTML = 'ENTER AGAIN';
+
+                      }
+                      secs--;
+                      var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+                      }
+
+
+
+
+
+
+
+
+
+      </script>
+
+          <div id="status"style="position: absolute: font-size:30px;"></div>
+
+          <script>countDown(<?php echo $phpvar; ?>,"status");</script>
+
+   </body>
+</html>
